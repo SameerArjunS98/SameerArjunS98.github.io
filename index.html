@@ -13,9 +13,11 @@
     a:visited { color: #999999; }
     body { background: var(--gradient-bg); color: var(--text-light); line-height: 1.5; transition: 0.4s ease; }
     nav { position: fixed; width: 100%; background: rgba(0,0,0,0.85); padding: 15px; display: flex; justify-content: center; gap: 25px; backdrop-filter: blur(6px); animation: fadeDown 0.8s ease; }
+    nav { z-index: 1000; } /* ensure nav is above content */
+    nav a { cursor: pointer; } /* make it clear links are clickable */
     nav a { color: white; text-decoration: none; font-size: 15px; transition: 0.3s; }
     nav a:hover { color: var(--primary); }
-    section { padding: 80px 16%; opacity: 0; transform: translateY(40px); animation: fadeUp 0.8s ease forwards; }
+    section { padding: 80px 16%; opacity: 0; transform: translateY(40px); animation: fadeUp 0.8s ease forwards; scroll-margin-top: 84px; } /* reserve space for fixed nav */
     .section-title {  color: var(--primary);  border-left: 5px solid var(--primary);}
     .card {  background: var(--card-bg);  color: var(--text-light);}
     .btn {  background: var(--primary);  color: white;}
@@ -230,6 +232,21 @@
     }
   }
     window.onload = type;
+  // ensure anchor links scroll past fixed nav (works even if scroll-margin-top unsupported)
+  (function(){
+    const nav = document.querySelector('nav');
+    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+        const offset = (nav ? nav.offsetHeight : 84) + 8; // nav height + small gap
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  })();
   </script>
 
 </body>
