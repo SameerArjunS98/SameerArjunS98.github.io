@@ -28,10 +28,11 @@
     .btn {  background: var(--primary);  color: white;}
     .btn:hover {  background: var(--hover);}
     nav a.active {  color: white ;  font-weight: bold;  border-bottom: 2px solid var(--highlight);}
+    
     .typed-wrapper {  max-width: 100%;  overflow: hidden;  word-wrap: break-word;  white-space: normal;}
-    #typed-text {  font-size: 24px;  color: var(--primary);  display: inline;}
+    #typed-text {  font-size: 24px;  color: var(--primary);  display: inline; word-break: break-word;}
     #cursor {  font-size: 24px;  color: var(--primary);  animation: blink 0.7s steps(1) infinite;}
-    @media screen and (max-width: 600px) {  #home h1 {    font-size: 28px;  }
+    @media screen and (max-width: 600px) {  #home h1 {    font-size: 24px;  }
     #typed-text,  #cursor {    font-size: 18px;  }
     .btn {    font-size: 14px;    padding: 10px 20px;  }
     nav {    flex-wrap: wrap;    gap: 12px;    padding: 10px;  }
@@ -244,26 +245,40 @@
   </footer>
   
   <script>
-    // Typing effect with loop
-    const text = "Robotics Application Engineer II at Toyota Material Handling";
-    const typedText = document.getElementById("typed-text");
-    let index = 0;
+    // Typing effect with loop and mobile-friendly phrases
+    const phrases = [
+      "Robotics Application Engineer II at Toyota Material Handling",
+      "AGV & autonomous forklift specialist",
+      "System integrator | API automation | LiDAR localization"
+    ];
 
-    function type() {
-      if (index < text.length) {
-        typedText.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 100); // typing speed
+    const typedText = document.getElementById("typed-text");
+    const cursor = document.getElementById("cursor");
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      const currentPhrase = phrases[phraseIndex];
+      const visibleText = currentPhrase.substring(0, charIndex);
+      typedText.textContent = visibleText;
+
+      if (!isDeleting && charIndex < currentPhrase.length) {
+        charIndex++;
+        setTimeout(typeLoop, 80);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeLoop, 40);
       } else {
-        setTimeout(() => {
-          typedText.textContent = "";
-          index = 0;
-          type(); // restart typing
-        }, 1500); // pause before restarting
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+        setTimeout(typeLoop, 1000);
       }
     }
 
-    window.onload = type;
+    window.onload = typeLoop;
 
     // Smooth scroll with offset for fixed nav
     (function () {
@@ -300,6 +315,7 @@
       });
     });
   </script>
+
 
 
 </body>
