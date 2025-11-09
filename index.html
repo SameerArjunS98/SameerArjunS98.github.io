@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sameer Arjun S | Robotics Application Engineer</title>
+  <script src="https://unpkg.com/scrollreveal"></script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     :root {--primary: #00aaff; --hover: #66ccff; --highlight: #00ffcc; --card-bg: #111; --text-light: #e6e6e6; --text-muted: #bbb;  --gradient-bg: linear-gradient(135deg, #0d0d0d, #1a1a1a);}
@@ -21,7 +23,7 @@
     nav a { color: white; text-decoration: none; font-size: 15px; transition: 0.3s; }
     nav a:hover { color: var(--primary); }
     section { padding: 80px 16%; opacity: 0; transform: translateY(40px); animation: fadeUp 0.8s ease forwards; scroll-margin-top: 84px; } /* reserve space for fixed nav */
-    .section-title {  color: var(--primary);  border-left: 5px solid var(--primary);}
+    .section-title {background: linear-gradient(to right, var(--primary), var(--highlight));  -webkit-background-clip: text;  -webkit-text-fill-color: transparent;  border-left: 5px solid var(--primary);}
     .card {  background: var(--card-bg);  color: var(--text-light);}
     .btn {  background: var(--primary);  color: white;}
     .btn:hover {  background: var(--hover);}
@@ -40,7 +42,9 @@
     #cursor {  font-size: 26px;  color: #00aaff;  animation: blink 0.7s steps(1) infinite;}
     @keyframes blink {  0%, 100% { opacity: 1; }  50% { opacity: 0; }}
     .btn { margin-top: 20px; padding: 12px 28px; background: #00aaff; border: none; cursor: pointer; color: white; border-radius: 5px; font-size: 16px; transition: 0.3s ease; animation: fadeUp 1.6s ease forwards; opacity: 0; }
-    .btn:hover { background: #0088dd; transform: scale(1.05); }
+    .btn:hover {  background: var(--hover);  box-shadow: 0 0 10px var(--hover), 0 0 20px var(--hover);}
+    .contact-buttons {  margin-top: 20px; color:white;}
+
 
     /* Section titles */
     h2.section-title { font-size: 32px; color: #e2ecf1ff; margin-bottom: 20px; border-left: 5px solid #00aaff; padding-left: 10px; }
@@ -63,7 +67,7 @@
     .card h4 { margin-top: 0; margin-bottom: 10px; color: var(--h4-color); font-weight:600; }
 
     /* Contact */
-    .social a { margin-right: 15px; font-size: 18px; text-decoration: none; color: #00aaff; }
+    .social a { margin-right: 15px; font-size: 18px; text-decoration: none; color: var(--highlight);text-shadow: 0 0 8px var(--highlight); }
 
     footer { text-align: center; padding: 20px; background: black; color: #ccc; margin-top: 40px; }
 
@@ -174,13 +178,6 @@
       <p>> Implemented Rapidly exploring Random Trees* Normalized algorithm is an improvement on the RRT* algorithm and is aimed to reduce the path computational time and improve length of paths generated between the start and goal locations</p>
       <p>> The normalized function in this algorithm monitors the generation of new nodes to fall in a probability distribution function within a specific region towards the goal node, with the steering and backtracking function similar to RRT* algorithm</p>
     </div>
-    
-    <div class="card">
-      <h3>Path planning of TurtleBot using RRT*N algorithm</h3>
-      <h4>Python, Robot path planning--<a href="https://github.com/Sameer-Arjun-S/ENPM661-Robot-Path-planning-using-RRT-star-and-RRT-star-N-algorithms" target="_blank">GitHub</a></h4>
-      <p>> Implemented Rapidly exploring Random Trees* Normalized algorithm is an improvement on the RRT* algorithm and is aimed to reduce the path computational time and improve length of paths generated between the start and goal locations</p>
-      <p>> The normalized function in this algorithm monitors the generation of new nodes to fall in a probability distribution function within a specific region towards the goal node, with the steering and backtracking function similar to RRT* algorithm</p>
-    </div>
 
     <div class="card">
       <h3>Time varying ankle impedance</h3>
@@ -224,6 +221,12 @@
       <a href="https://github.com/SameerArjunS98" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/sameer-arjun-satheesh/" target="_blank">LinkedIn</a>
     </div>
+    <div class="contact-buttons">
+      <a href="https://github.com/SameerArjunS98/SameerArjunS98.github.io/blob/main/Resume%20folder/Resume.pdf" download class="btn">
+        Download My Resume
+      </a>
+    </div>
+
   </section>
 
   <footer>
@@ -264,6 +267,14 @@
       });
     });
   })();
+    ScrollReveal().reveal('section', {
+    distance: '40px',
+    duration: 800,
+    easing: 'ease-out',
+    origin: 'bottom',
+    interval: 200
+  });
+
   </script>
 
 </body>
