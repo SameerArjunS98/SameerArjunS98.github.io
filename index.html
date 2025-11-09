@@ -246,11 +246,7 @@
   
   <script>
     // Typing effect with loop and mobile-friendly phrases
-    const phrases = [
-      "Robotics Application Engineer II at Toyota Material Handling",
-      "AGV & autonomous forklift specialist",
-      "System integrator | API automation | LiDAR localization"
-    ];
+    const phrases = ["Robotics Application Engineer II @ Toyota Material Handling / The Raymond Corp."];
 
     const typedText = document.getElementById("typed-text");
     const cursor = document.getElementById("cursor");
@@ -265,10 +261,10 @@
 
       if (!isDeleting && charIndex < currentPhrase.length) {
         charIndex++;
-        setTimeout(typeLoop, 80);
+        setTimeout(typeLoop, 50);
       } else if (isDeleting && charIndex > 0) {
         charIndex--;
-        setTimeout(typeLoop, 40);
+        setTimeout(typeLoop, 10);
       } else {
         isDeleting = !isDeleting;
         if (!isDeleting) {
