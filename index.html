@@ -27,6 +27,8 @@
     .card {  background: var(--card-bg);  color: var(--text-light);}
     .btn {  background: var(--primary);  color: white;}
     .btn:hover {  background: var(--hover);}
+    nav a.active {  color: white ;  font-weight: bold;  border-bottom: 2px solid var(--highlight);}
+
     #home { animation-delay: 0.2s; }
     #about { animation-delay: 0.4s; }
     #experience { animation-delay: 0.6s; }
@@ -234,48 +236,63 @@
   </footer>
   
   <script>
+    // Typing effect with loop
     const text = "Robotics Application Engineer II at Toyota Material Handling";
     const typedText = document.getElementById("typed-text");
     let index = 0;
 
     function type() {
-    if (index < text.length) {
-      typedText.textContent += text.charAt(index);
-      index++;
-      setTimeout(type, 100); // typing speed
-    } else {
-      setTimeout(() => {
-        typedText.textContent = "";
-        index = 0;
-        type(); // restart typing
-      }, 1500); // pause before restarting
+      if (index < text.length) {
+        typedText.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100); // typing speed
+      } else {
+        setTimeout(() => {
+          typedText.textContent = "";
+          index = 0;
+          type(); // restart typing
+        }, 1500); // pause before restarting
+      }
     }
-  }
+
     window.onload = type;
-  // ensure anchor links scroll past fixed nav (works even if scroll-margin-top unsupported)
-  (function(){
-    const nav = document.querySelector('nav');
-    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
-        const target = document.getElementById(id);
-        if (!target) return;
-        const offset = (nav ? nav.offsetHeight : 84) + 8; // nav height + small gap
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+
+    // Smooth scroll with offset for fixed nav
+    (function () {
+      const nav = document.querySelector("nav");
+      document.querySelectorAll('nav a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          const id = this.getAttribute("href").slice(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+          const offset = (nav ? nav.offsetHeight : 84) + 8;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        });
+      });
+    })();
+
+    // Scroll listener to highlight active nav link
+    window.addEventListener("scroll", () => {
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      const sections = Array.from(navLinks).map(link =>
+        document.querySelector(link.getAttribute("href"))
+      );
+      const scrollPos = window.scrollY + document.querySelector("nav").offsetHeight + 20;
+
+      sections.forEach((section, index) => {
+        if (
+          scrollPos >= section.offsetTop &&
+          scrollPos < section.offsetTop + section.offsetHeight
+        ) {
+          navLinks.forEach(link => link.classList.remove("active"));
+          navLinks[index].classList.add("active");
+        }
       });
     });
-  })();
-    ScrollReveal().reveal('section', {
-    distance: '40px',
-    duration: 800,
-    easing: 'ease-out',
-    origin: 'bottom',
-    interval: 200
-  });
-
   </script>
+
 
 </body>
 </html>
