@@ -65,7 +65,7 @@
   <section id="home">
     <h1>Hey there, I'm <b>Sameer Arjun S</b></h1>
     <!-- <h2>Robotics Application Engineer II at Toyota Material Handling</h2> -->
-    <h2><span id="typed-text"></span><span id="cursor">|</span></h2>
+    <h3><span id="typed-text"></span><span id="cursor">|</span></h3>
     <button class="btn" onclick="location.href='#about'">Get to know me...</button>
   </section>
 
@@ -213,12 +213,18 @@
     let index = 0;
 
     function type() {
-      if (index < text.length) {
-        typedText.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 100); // typing speed
-      }
+    if (index < text.length) {
+      typedText.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 100); // typing speed
+    } else {
+      setTimeout(() => {
+        typedText.textContent = "";
+        index = 0;
+        type(); // restart typing
+      }, 1500); // pause before restarting
     }
+  }
     window.onload = type;
   </script>
 
