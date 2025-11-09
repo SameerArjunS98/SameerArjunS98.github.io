@@ -6,15 +6,20 @@
   <title>Sameer Arjun S | Robotics Application Engineer</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    :root {--primary: #00aaff; --hover: #66ccff; --highlight: #00ffcc; --card-bg: #111; --text-light: #e6e6e6; --text-muted: #bbb;  --gradient-bg: linear-gradient(135deg, #0d0d0d, #1a1a1a);}
     html { scroll-behavior: smooth; }
     a { color: #00aaff; text-decoration: none; transition: color 0.3s ease;    }
     a:hover { color: #66ccff; }
     a:visited { color: #999999; }
-    body { background: #0d0d0d; color: #e6e6e6; line-height: 1.5; transition: 0.4s ease; }
+    body { background: var(--gradient-bg); color: var(--text-light); line-height: 1.5; transition: 0.4s ease; }
     nav { position: fixed; width: 100%; background: rgba(0,0,0,0.85); padding: 15px; display: flex; justify-content: center; gap: 25px; backdrop-filter: blur(6px); animation: fadeDown 0.8s ease; }
     nav a { color: white; text-decoration: none; font-size: 15px; transition: 0.3s; }
-    nav a:hover { color: #00aaff; }
+    nav a:hover { color: var(--primary); }
     section { padding: 80px 16%; opacity: 0; transform: translateY(40px); animation: fadeUp 0.8s ease forwards; }
+    .section-title {  color: var(--primary);  border-left: 5px solid var(--primary);}
+    .card {  background: var(--card-bg);  color: var(--text-light);}
+    .btn {  background: var(--primary);  color: white;}
+    .btn:hover {  background: var(--hover);}
     #home { animation-delay: 0.2s; }
     #about { animation-delay: 0.4s; }
     #experience { animation-delay: 0.6s; }
