@@ -28,9 +28,9 @@
     .btn {  background: var(--primary);  color: white;}
     .btn:hover {  background: var(--hover);}
     nav a.active {  color: white ;  font-weight: bold;  border-bottom: 2px solid var(--highlight);}
-    
+    #typed-container {  display: inline-block;  max-width: 100%;  white-space: normal;  word-break: break-word;}
     .typed-wrapper {  max-width: 100%;  overflow: hidden;  word-wrap: break-word;  white-space: normal;}
-    #typed-text {  font-size: 24px;  color: var(--primary);  display: inline; word-break: break-word;}
+    #typed-text {  font-size: 24px;  color: var(--primary);  display: block; }
     #cursor {  font-size: 24px;  color: var(--primary);  animation: blink 0.7s steps(1) infinite;}
     @media screen and (max-width: 600px) {  #home h1 {    font-size: 24px;  }
     #typed-text,  #cursor {    font-size: 18px;  }
@@ -50,7 +50,7 @@
     #home h1 { font-size: 52px; color: #00aaff; animation: slideRight 1s ease; }
     #home h2 { font-size: 26px; color: #bbb; margin-top: 10px; animation: slideRight 1.3s ease; }
     #typed-text {  font-size: 26px;  color: var(--primary);  white-space: nowrap;  overflow: hidden;  border-right: 2px solid var(--primary);  max-width: 100%;  display: inline-block;  text-overflow: ellipsis;}
-    #cursor {  font-size: 26px;  color: var(--primary);  animation: blink 0.7s steps(1) infinite;}
+    #cursor {  display: none;}
     @keyframes blink {  0%, 100% { opacity: 1; }  50% { opacity: 0; }}
     .btn { margin-top: 20px; padding: 12px 28px; background: #00aaff; border: none; cursor: pointer; color: white; border-radius: 5px; font-size: 16px; transition: 0.3s ease; animation: fadeUp 1.6s ease forwards; opacity: 0; }
     .btn:hover {  background: var(--hover);  box-shadow: 0 0 10px var(--hover), 0 0 20px var(--hover);}
@@ -103,7 +103,8 @@
   <section id="home">
     <h1>Hey there, I'm <b>Sameer Arjun S</b></h1>
     <!-- <h2>Robotics Application Engineer II at Toyota Material Handling</h2> -->
-    <h3><span id="typed-text"></span><span id="cursor">|</span></h3>
+    <div id="typed-container">  <div id="typed-text"></div>  <span id="cursor">|</span>
+    </div>
     <button class="btn" onclick="location.href='#about'">Get to know me...</button>
   </section>
 
@@ -245,32 +246,70 @@
   </footer>
   
   <script>
-    // Typing effect with loop and mobile-friendly phrases
-    const phrases = ["Robotics Application Engineer II @ Toyota Material Handling / The Raymond Corp."];
+    // Typing effect: each phrase on a new line, then delete all
+    const phrases = [
+      "Robotics Application Engineer II",
+      "@ Toyota Material Handling",
+      "/ The RAYMOND Corp."
+    ];
 
     const typedText = document.getElementById("typed-text");
     const cursor = document.getElementById("cursor");
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
+    let currentLine = null;
 
     function typeLoop() {
-      const currentPhrase = phrases[phraseIndex];
-      const visibleText = currentPhrase.substring(0, charIndex);
-      typedText.textContent = visibleText;
+      if (!currentLine) {
+        currentLine = document.createElement("div");
+        currentLine.className = "typed-line";
+        typedText.appendChild(currentLine);
+      }
 
-      if (!isDeleting && charIndex < currentPhrase.length) {
+      const currentPhrase = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        currentLine.textContent += currentPhrase.charAt(charIndex);
         charIndex++;
-        setTimeout(typeLoop, 50);
-      } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(typeLoop, 10);
-      } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-          phraseIndex = (phraseIndex + 1) % phrases.length;
+        if (charIndex < currentPhrase.length) {
+          setTimeout(typeLoop, 50);
+        } else {
+          phraseIndex++;
+          charIndex = 0;
+          currentLine = null;
+          if (phraseIndex < phrases.length) {
+            setTimeout(typeLoop, 800);
+          } else {
+            setTimeout(() => {
+              isDeleting = true;
+              phraseIndex = phrases.length - 1;
+              currentLine = typedText.lastChild;
+              charIndex = currentLine.textContent.length;
+              typeLoop();
+            }, 1500);
+          }
         }
-        setTimeout(typeLoop, 1000);
+      } else {
+        if (charIndex > 0) {
+          currentLine.textContent = currentLine.textContent.slice(0, charIndex - 1);
+          charIndex--;
+          setTimeout(typeLoop, 30);
+        } else {
+          typedText.removeChild(currentLine);
+          phraseIndex--;
+          if (phraseIndex >= 0) {
+            currentLine = typedText.lastChild;
+            charIndex = currentLine.textContent.length;
+            setTimeout(typeLoop, 30);
+          } else {
+            isDeleting = false;
+            phraseIndex = 0;
+            charIndex = 0;
+            currentLine = null;
+            setTimeout(typeLoop, 800);
+          }
+        }
       }
     }
 
@@ -311,6 +350,7 @@
       });
     });
   </script>
+
 
 
 
