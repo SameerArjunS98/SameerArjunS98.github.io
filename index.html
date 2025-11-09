@@ -25,6 +25,10 @@
     /* Hero */
     #home { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
     #home h1 { font-size: 52px; color: #00aaff; animation: slideRight 1s ease; }
+    #typed-text {   font-size: 52px;  color: #00aaff;  white-space: nowrap;  overflow: hidden;  border-right: 2px solid #00aaff;}
+    #cursor {  font-size: 52px;  color: #00aaff;  animation: blink 0.7s steps(1) infinite;}
+    @keyframes blink {  0%, 100% { opacity: 1; }  50% { opacity: 0; }}
+
     #home h2 { font-size: 26px; color: #bbb; margin-top: 10px; animation: slideRight 1.3s ease; }
     .btn { margin-top: 20px; padding: 12px 28px; background: #00aaff; border: none; cursor: pointer; color: white; border-radius: 5px; font-size: 16px; transition: 0.3s ease; animation: fadeUp 1.6s ease forwards; opacity: 0; }
     .btn:hover { background: #0088dd; transform: scale(1.05); }
@@ -60,7 +64,8 @@
 
   <section id="home">
     <h1>Hey there, I'm <b>Sameer Arjun S</b></h1>
-    <h2>Robotics Application Engineer</h2>
+    <!-- <h2>Robotics Application Engineer II at Toyota Material Handling</h2> -->
+    <h2><span id="typed-text"></span><span id="cursor">|</span></h2>
     <button class="btn" onclick="location.href='#about'">Get to know me...</button>
   </section>
 
@@ -201,5 +206,21 @@
   <footer>
     © 2025 Sameer Arjun S — Robotics Application Engineer
   </footer>
+  
+  <script>
+    const text = "Robotics Application Engineer II at Toyota Material Handling";
+    const typedText = document.getElementById("typed-text");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typedText.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100); // typing speed
+      }
+    }
+    window.onload = type;
+  </script>
+
 </body>
 </html>
