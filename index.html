@@ -122,36 +122,35 @@
     <div class="card">
       <h3>Application Engineer II - Toyota Material Handling / The Raymond Corp.</h3>
       <h4>Jul 2024 - Present</h4>
-      <p>> Led pilot deployment of autonomous VNA forklift systems as project POC using Kollmorgen NDC Solutions for AGV path planning, mission logic, and system architecture, enhancing operational efficiency and scalability across client facilities</p>
-      <p>> Developed and optimized site layouts leveraging CAD tools and localization strategies, enabling high-precision navigation and adaptive routing for AGV fleets</p>
-      <p>> Troubleshot and resolved system-level issues using Wireshark, CAN analyzers, and PLC diagnostics, improving logic robustness and reducing downtime</p>
-      <p>> Integrated AGV platforms with WMS/ERP systems via APIs, automating task execution and enabling real-time inventory visibility</p>
-      <p>> Delivered technical training and authored comprehensive documentation, accelerating customer onboarding and empowering internal support teams </p>
+      <p>> Architected and deployed 26 autonomous forklift systems utilizing Kollmorgen NDC Solutions, specializing in AGV path planning, mission logic design, and robust system architecture</p>
+      <p>> Developed localization and routing models for site layouts, ensuring scalable navigation for AGV fleets interacting with AMRs</p>
+      <p>> Resolved system failures via Wireshark and CAN diagnostics, improving control logic and fleet reliability</p>
+      <p>> Integrated AGV platforms with WMS/ERP via APIs for automated task execution and real-time tracking</p>
+      <p>> Standardized technical documentation and led training to streamline internal and customer onboarding</p>
     </div>
       
     <div class="card">
       <h3>Graduate Teaching Assistant - University of Maryland, MAGE</h3>
       <h4>Aug 2023 - May 2024</h4>
-      <p>> Design and analysis work using CATIA for Single Board Solution architecture trigger modules of power tools</p>
-      <p>> Conducted testing & analysis for DeWalt power and impact drills module failure and proposed corrective solutions</p>
-      <p>> Proposed new CraftsMan EV Charger product launch pipeline as part of the intern innovation challenge</p>
+      <p>> Part-time graduate teaching assistant for Software engineering course offered by Maryland Applied Graduate Engineering department, as part of Masters in Software Engineering graduate degree at UMD.</p>
+     
     </div>
 
     <div class="card">
       <h3>Electro-Mechanical Engineering Intern - Stanley Black and Decker Inc.</h3>
       <h4>Jun 2022 - Aug 2023</h4>
-      <p>> Design and analysis work using CATIA for Single Board Solution architecture trigger modules of power tools</p>
-      <p>> Conducted testing & analysis for DeWalt power and impact drills module failure and proposed corrective solutions</p>
-      <p>> Proposed new CraftsMan EV Charger product launch pipeline as part of the intern innovation challenge</p>
+      <p>> Engineered SBS (Single Board Solutions) trigger modules for universal power tool architectures using CATIA, optimizing mechanical design and assembly</p>
+      <p>> Resolved DeWalt impact drill failures and co-introduced polymer-based capacitors to SBS architectures to enhance modulereliability and electrical performance</p>
+      <p>> CraftsMan EV Charger pipeline for innovation challenge, demonstrating strategic product development & market expansion</p>
     </div>
 
     <div class="card">
       <h3>GET - MOLEX India Business Services Pvt. Ltd.</h3>
       <h4>MAr 2021 - Jul 2022</h4>
-      <p>> Design and analysis using Siemens NX for various types of Power and Signal connector and packaging systems</p>
-      <p>> Worked on pilot project to utilize Finite Element Analysis to simulate mechanical drop tests for packaged electrical connectors to improve robustness of electrical connector design and reduce time to market, saving about 1 million USD annually</p>
-      <p>> Worked with R&D team to validate liquid cooling technologies for server and data center connector applications, resulting in increased current carrying capacity by 120%. Results were presented at Open Compute Project global conference, 2022</p>
-      <p>> Worked to implement packaging CAD automation using Siemens NX - Project Template Studio for Power & Signal Business Unit</p>  
+      <p>> Designed and analyzed Power and Signal connector systems using Siemens NX for diverse, high-performance packaging applications</p>
+      <p>> Saved $1 million annually by implementing FEA-based mechanical drop test simulations, which significantly improved connectorrobustness and accelerated time-to-market</p>
+      <p>> Increased current carrying capacity by 120% by validating liquid cooling technologies for data center high power & signal connectors</p>
+      <p>> Presented technical results at the 2022 Open Compute Project Global Conference</p>  
     </div>
   </section>
 
@@ -171,29 +170,31 @@
   <section id="projects">
     <h2 class="section-title">Projects</h2>
     <div class="card">
-      <h3>Autonomous Robots</h3>
+      <h3>Autonomous 4-Wheeled Mobile Manipulator</h3>
       <h4>Localization, sensor fusion, path planning, hardware implementation--<a href="https://www.youtube.com/watch?v=Fuu_ZMRRXJ8" target="_blank">YouTube</a></h4>
-      <p>> Built autonomous 4 wheeled differential drive robot, with a parallel jaw gripper for pick and place operations</p>
-      <p>> Control was achieved using onboard Raspberry Pi4, which included camera, ultrasonic sensor, motor encoders and 3 Axis Inertial Measurement Unit controlled by Arduino Nano</p>
+      <p>> Architected a differential drive robot with a parallel-jaw gripper, utilizing a Raspberry Pi 4 for high-level decision-making & an Arduino Nano for low-level motor control</p>
+      <p>> Developed a computer vision pipeline for real-time color & image recognition to identify targets & depth estimation for tasks</p>
+      <p>> Implemented robust sensor fusion using IMU, ultrasonic sensors, and wheel encoders to achieve localization & closed-loop control</p>
     </div>
     
     <div class="card">
       <h3>Swarm robots for industrial applications</h3>
       <h4>C++, ROS2, Python, Gazebo--<a href="https://github.com/Sameer-Arjun-S/hydra" target="_blank">GitHub</a></h4>
-      <p>> Implemented swarm robot setup with 20 TurtleBots with simultaneous navigation (MAPP) on ROS 2 Humble and Python to aid in industrial emergencies</p>
-      <p>> This development was implemented using an Agile Iterative software development process</p>
+      <p>> Architected a swarm system implementing Multi-Agent Path Planning (MAPP) for 20 TurtleBots achieving coordinated navigation</p>
+      <p>> Leveraged Agile methodologies to develop communication stack & obstacle avoidance logic within the ROS2 ecosystem</p>
     </div>
 
     <div class="card">
       <h3>Path planning of TurtleBot using RRT*N algorithm</h3>
       <h4>Python, Robot path planning--<a href="https://github.com/Sameer-Arjun-S/ENPM661-Robot-Path-planning-using-RRT-star-and-RRT-star-N-algorithms" target="_blank">GitHub</a></h4>
-      <p>> Implemented RRTN algorithm on TurtleBot sim, optimizing shortest-path planning across multiple maze scenarios with improved computational efficiency</p>
+      <p>> Developed a "Normalized" RRT* variant using a probability distribution function to bias node generation toward the goal, significantlyreducing computational overhead</p>
+      <p>> Optimized path length and convergence rates by integrating steering and backtracking functions, outperforming standard RRT* in complex occupancy grids </p>
       </div>
 
     <div class="card">
       <h3>Time varying ankle impedance</h3>
       <h4>MatLab--<a href="https://github.com/Sameer-Arjun-S/time_varying_ankle_impedance" target="_blank">GitHub</a></h4>
-      <p>> Conducted analysis of the inversion-eversion of ankle joint for the estimation of ankle impedance control required for a human rehabilitation system using an Anklebot robot</p>
+      <p>> Quantified ankle joint inversion-eversion and modeled bio-mechanical control strategies to estimate impedance parameters (stiffness and damping), enabling the development of adaptive robotic assistance for gait rehabilitation</p>
     </div>
 
     <div class="card">
